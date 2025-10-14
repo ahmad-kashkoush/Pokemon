@@ -9,7 +9,7 @@ This template should help get you started developing with Vue 3 in Vite.
 ## Recommended Browser Setup
 
 - Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
+  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
   - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
 - Firefox:
   - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
@@ -46,3 +46,11 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## Demo
+
+### App Demonstration
+
+https://github.com/user-attachments/assets/2025-10-14%2017-21-17.mp4
+
+_Watch the Pokemon Trainer app in action! This demo shows the complete functionality including browsing Pokemon, viewing details with image lightbox, managing favorites, and the responsive UI design._
