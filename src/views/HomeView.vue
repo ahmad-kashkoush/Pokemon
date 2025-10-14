@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
 import SearchBar from '@/components/SearchBar.vue'
 import PokemonList from '@/components/PokemonList.vue'
+import NavigationCard from '@/components/NavigationCard.vue'
 import { useFavoritesStore } from '@/stores/favorites'
 
 const searchTerm = ref('')
@@ -40,19 +40,11 @@ const handleSearch = (value: string) => {
 
       <!-- Navigation Cards -->
       <div class="grid grid-cols-2 gap-3 mt-4 mb-6">
-        <RouterLink to="/team" class="block">
-          <div class="bg-gradient-to-br from-purple-500 to-purple-600 p-4 rounded-2xl text-white shadow-lg">
-            <h3 class="font-semibold text-lg">Mijn team</h3>
-            <p class="text-purple-100 text-sm mt-1">6 pokémons</p>
-          </div>
-        </RouterLink>
+        <NavigationCard to="/team" title="Mijn team" subtitle="6 pokémons"
+          gradient="bg-gradient-to-br from-purple-500 to-purple-600" />
 
-        <RouterLink to="/favorites" class="block">
-          <div class="bg-gradient-to-br from-teal-400 to-teal-500 p-4 rounded-2xl text-white shadow-lg">
-            <h3 class="font-semibold text-lg">Favorieten</h3>
-            <p class="text-teal-100 text-sm mt-1">{{ favoritesStore.favoritesCount }} pokémons</p>
-          </div>
-        </RouterLink>
+        <NavigationCard to="/favorites" title="Favorieten" :subtitle="`${favoritesStore.favoritesCount} pokémons`"
+          gradient="bg-gradient-to-br from-teal-400 to-teal-500" />
       </div>
     </div>
 
