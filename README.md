@@ -56,6 +56,7 @@ npm run lint
 - [x] Trainers can see the details of a Pokémon, with the general info ==(name, number, picture, types) but also things like abilities, move set and stats.==
 - [x] Trainers can mark a Pokémon as favourite (or remove it from favourites).
 - [x] Trainers have a ==separate list with only their favourite Pokémon.==
+- [x] Trainers can see a bigger version of the picture of a Pokémon (from the details of one). Include zoom & pan. (for web: we’re looking for a lightbox component)
 
 ### Nice to Have
 
