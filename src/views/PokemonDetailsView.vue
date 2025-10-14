@@ -2,7 +2,6 @@
 import { usePokemonDetailsQuery } from '@/api/pokemon.query'
 import { useFavoritesStore } from '@/stores/favorite.store'
 import { useTeamStore } from '@/stores/team.store'
-import ImageComponent from '@/components/ImageComponent.vue'
 import { useToast } from 'vue-toastification'
 import AppBackButton from '@/components/app/AppBackButton.vue'
 import TypeBadge from '@/components/TypeBadge.vue'
@@ -11,6 +10,7 @@ import StatBar from '@/components/StatBar.vue'
 import MoveBadge from '@/components/MoveBadge.vue'
 import AppLoader from '@/components/app/AppLoader.vue'
 import AppError from '@/components/app/AppError.vue'
+import PokemonImageViewer from '@/components/PokemonImage/PokemonImageViewer.vue'
 
 const favoritesStore = useFavoritesStore()
 const teamStore = useTeamStore()
@@ -138,10 +138,8 @@ const toggleTeamMember = () => {
 
         <!-- Pokemon Image -->
         <div class="flex justify-center">
-          <ImageComponent
-            :src="pokemon.sprites?.other?.['official-artwork']?.front_default || pokemon.sprites?.front_default"
-            :alt="pokemon.name" class="w-48 h-48 object-contain" :lightbox="true" />
-
+          <PokemonImageViewer :sprites="pokemon.sprites" :pokemon-name="formatName(pokemon.name)" :alt="pokemon.name"
+            class="w-48 h-48 object-contain" :show-thumbnails="true" />
         </div>
 
         <div class="text-center mt-4">
