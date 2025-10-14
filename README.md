@@ -47,12 +47,22 @@ npm run build
 npm run lint
 ```
 
+## Implemented requirements
+
+### Core
+
+- [x] Trainers can see a list of Pokémon with some general information, such as ==name, number, picture and types.==
+- [x] Trainers can search for Pokémon by ==name and number.==
+- [x] Trainers can see the details of a Pokémon, with the general info ==(name, number, picture, types) but also things like abilities, move set and stats.==
+- [x] Trainers can mark a Pokémon as favourite (or remove it from favourites).
+- [x] Trainers have a ==separate list with only their favourite Pokémon.==
+
+### Nice to Have
+
+- todo
+
 ## Demo
 
 ### App Demonstration
 
-
-
 https://github.com/user-attachments/assets/aa8edc9a-13d9-455c-8d5a-35e20440c6e3
-
-
