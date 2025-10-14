@@ -7,11 +7,15 @@ import TypeBadge from '@/components/TypeBadge.vue'
 import ContentCard from '@/components/ContentCard.vue'
 import StatBar from '@/components/StatBar.vue'
 import MoveBadge from '@/components/MoveBadge.vue'
-import NotFoundView from './NotFoundView.vue'
 import AppLoader from '@/components/app/appLoader.vue'
+import AppError from '@/components/app/appError.vue'
 
 const favoritesStore = useFavoritesStore()
-const { data: pokemon, isLoading, isError } = usePokemonDetailsQuery()
+const { data: pokemon, isLoading, isError, error, refetch } = usePokemonDetailsQuery()
+
+const handleRetry = () => {
+  refetch()
+}
 
 // Helper functions
 const formatName = (name: string) => {
@@ -71,10 +75,12 @@ const toggleFavorite = () => {
   <!-- Loading State -->
   <AppLoader :isLoading="isLoading" />
 
-  <!-- Error State - Show NotFound component -->
-  <NotFoundView v-if="isError" />
+  <!-- Error State -->
+  <AppError :hasError="isError" :errorMessage="error?.message || 'Failed to load Pokemon details'"
+    @retry="handleRetry" />
+
   <!-- Pokemon Details -->
-  <div v-else-if="pokemon" :class="getPrimaryTypeColor(pokemon)" class="min-h-screen">
+  <div v-if="!isLoading && !isError && pokemon" :class="getPrimaryTypeColor(pokemon)" class="min-h-screen">
     <div class="pb-20">
       <!-- Navigation -->
       <div class="flex items-center justify-between p-4 text-white">

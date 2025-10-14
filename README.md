@@ -61,6 +61,8 @@ npm run lint
 
 - [x] Some trainers are forgetful, and don’t remember the name or number of a pokemon. Searching by type (such as “fire”) should also be possible.
 
+- [x] Trainers are always on the road in search of new Pokémon so they don’t always have the best connection. The customer would like to have loading and error indicators when data can not be found or it takes long too long.
+
 
 ## Demo
 

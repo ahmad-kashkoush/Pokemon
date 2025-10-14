@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 import { usePokemonListQuery, useFilteredPokemonList } from '../api/pokemon.query'
 import PokemonCard from './PokemonCard.vue'
 import AppLoader from '@/components/app/appLoader.vue'
+import AppError from '@/components/app/appError.vue'
 
 interface Props {
   searchTerm: string
@@ -13,11 +14,15 @@ const props = defineProps<Props>()
 const searchTermRef = computed(() => props.searchTerm)
 const router = useRouter()
 
-const { data: pokemonList, error, isLoading } = usePokemonListQuery()
+const { data: pokemonList, error, isLoading, refetch } = usePokemonListQuery()
 
 const filteredPokemon = useFilteredPokemonList(pokemonList, searchTermRef)
 
 const displayPokemon = computed(() => filteredPokemon.value)
+
+const handleRetry = () => {
+  refetch()
+}
 
 const handlePokemonClick = (pokemon: { id: number }) => {
   console.log('Navigating to Pokemon ID:', pokemon.id)
@@ -33,15 +38,13 @@ const handlePokemonClick = (pokemon: { id: number }) => {
 <template>
   <div class="px-4 pb-6">
     <AppLoader :isLoading="isLoading" />
-    <div v-if="error" class="text-center py-8 text-red-500">
-      Error loading Pokémon: {{ error.message }}
-    </div>
+    <AppError :hasError="!!error" :errorMessage="error?.message" @retry="handleRetry" />
 
-    <div v-else-if="displayPokemon.length === 0" class="text-center py-8 text-gray-600">
+    <div v-if="!isLoading && !error && displayPokemon.length === 0" class="text-center py-8 text-gray-600">
       No Pokémon found matching your search.
     </div>
 
-    <div v-else class="space-y-3">
+    <div v-if="!isLoading && !error && displayPokemon.length > 0" class="space-y-3">
       <PokemonCard v-for="poke in displayPokemon" :key="poke.id" :pokemon="poke" @click="handlePokemonClick" />
     </div>
   </div>
