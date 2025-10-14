@@ -2,6 +2,7 @@
 import { useRouter } from 'vue-router'
 import { usePokemonDetailsQuery } from '@/api/pokemon.query'
 import { useFavoritesStore } from '@/stores/favorites'
+import ImageComponent from '@/components/ImageComponent.vue'
 
 const router = useRouter()
 const favoritesStore = useFavoritesStore()
@@ -123,14 +124,12 @@ const toggleFavorite = () => {
       <div class="px-4 pb-8">
         <h2 class="text-white text-3xl font-bold mb-2">{{ formatName(pokemon.name) }}</h2>
 
-
         <!-- Pokemon Image -->
         <div class="flex justify-center">
-          <img v-if="pokemon.sprites?.other?.['official-artwork']?.front_default"
-            :src="pokemon.sprites.other['official-artwork'].front_default" :alt="pokemon.name"
-            class="w-48 h-48 object-contain" />
-          <img v-else-if="pokemon.sprites?.front_default" :src="pokemon.sprites.front_default" :alt="pokemon.name"
-            class="w-48 h-48 object-contain" />
+          <ImageComponent
+            :src="pokemon.sprites?.other?.['official-artwork']?.front_default || pokemon.sprites?.front_default"
+            :alt="pokemon.name" class="w-48 h-48 object-contain" lightbox="true" />
+
         </div>
 
         <div class="text-center mt-4">
