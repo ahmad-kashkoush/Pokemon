@@ -2,7 +2,8 @@
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useFavoritesStore } from '@/stores/favorites'
-import type { Pokemon } from '@/types/pokemon.type'
+import BackButton from '@/components/BackButton.vue'
+import PokemonCard from '@/components/PokemonCard.vue'
 
 const router = useRouter()
 const favoritesStore = useFavoritesStore()
@@ -48,11 +49,7 @@ const getTypeColor = (type: string) => {
   <main class="min-h-screen bg-gradient-to-br from-teal-400 to-teal-500">
     <!-- Header -->
     <div class="px-4 py-3 pt-12 flex items-center gap-3">
-      <button @click="goBack" class="p-2 text-white">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
+      <BackButton />
       <h1 class="text-3xl font-bold text-white">Favorieten</h1>
     </div>
 

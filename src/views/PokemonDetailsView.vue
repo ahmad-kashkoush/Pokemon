@@ -3,6 +3,8 @@ import { useRouter } from 'vue-router'
 import { usePokemonDetailsQuery } from '@/api/pokemon.query'
 import { useFavoritesStore } from '@/stores/favorites'
 import ImageComponent from '@/components/ImageComponent.vue'
+import BackButton from '@/components/BackButton.vue'
+import TypeBadge from '@/components/TypeBadge.vue'
 
 const router = useRouter()
 const favoritesStore = useFavoritesStore()
@@ -104,11 +106,7 @@ const toggleFavorite = () => {
     <div v-else-if="pokemon" class="pb-20">
       <!-- Navigation -->
       <div class="flex items-center justify-between p-4 text-white">
-        <button @click="goBack" class="p-2">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
+        <BackButton />
         <h1 class="text-lg font-semibold">Detail pokemon</h1>
         <button @click="toggleFavorite" class="p-2">
           <svg class="w-6 h-6"
