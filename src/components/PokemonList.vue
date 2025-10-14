@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { usePokemonListQuery, useFilteredPokemonList } from '../api/pokemon.query'
 
 interface Props {
@@ -8,17 +9,14 @@ interface Props {
 
 const props = defineProps<Props>()
 const searchTermRef = computed(() => props.searchTerm)
+const router = useRouter()
 
-// Use the simple query
 const { data: pokemonList, error, isLoading } = usePokemonListQuery()
 
-// Get filtered pokemon list
 const filteredPokemon = useFilteredPokemonList(pokemonList, searchTermRef)
 
-// Display pokemon
 const displayPokemon = computed(() => filteredPokemon.value)
 
-// Helper functions
 const formatName = (name: string) => {
   return name.charAt(0).toUpperCase() + name.slice(1)
 }
@@ -50,6 +48,17 @@ const getTypeColor = (type: string) => {
   }
   return typeColors[type] || 'bg-gray-400'
 }
+
+const navigateToPokemon = (pokemonId: number) => {
+  console.log('Navigating to Pokemon ID:', pokemonId)
+  console.log('Target URL:', `/pokemons/${pokemonId}`)
+  try {
+    router.push(`/pokemons/${pokemonId}`)
+    console.log('Navigation successful')
+  } catch (error) {
+    console.error('Navigation error:', error)
+  }
+}
 </script>
 <template>
   <div class="px-4 pb-6">
@@ -67,8 +76,8 @@ const getTypeColor = (type: string) => {
     </div>
 
     <div v-else class="space-y-3">
-      <div v-for="poke in displayPokemon" :key="poke.id"
-        class="bg-white rounded-2xl p-4 flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow min-h-[80px]">
+      <div v-for="poke in displayPokemon" :key="poke.id" @click.prevent="navigateToPokemon(poke.id)"
+        class="bg-white rounded-2xl p-4 flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow min-h-[80px] cursor-pointer">
         <!-- Pokemon Image -->
         <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
           <img v-if="poke.sprites?.front_default" :src="poke.sprites.front_default" :alt="poke.name"
