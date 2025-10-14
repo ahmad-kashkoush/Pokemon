@@ -2,20 +2,7 @@ import { useQuery } from '@tanstack/vue-query'
 import { computed, type Ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { PokemonService } from './pokemon.service'
-
-export interface Pokemon {
-  id: number
-  name: string
-  sprites: {
-    front_default: string
-  }
-  types: Array<{
-    slot: number
-    type: {
-      name: string
-    }
-  }>
-}
+import type { Pokemon } from '@/types/pokemon.type'
 
 export const usePokemonListQuery = () => {
   return useQuery({

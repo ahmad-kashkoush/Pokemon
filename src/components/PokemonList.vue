@@ -2,6 +2,8 @@
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePokemonListQuery, useFilteredPokemonList } from '../api/pokemon.query'
+import { useFavoritesStore } from '@/stores/favorites'
+import type { Pokemon } from '@/types/pokemon.type'
 
 interface Props {
   searchTerm: string
@@ -10,6 +12,7 @@ interface Props {
 const props = defineProps<Props>()
 const searchTermRef = computed(() => props.searchTerm)
 const router = useRouter()
+const favoritesStore = useFavoritesStore()
 
 const { data: pokemonList, error, isLoading } = usePokemonListQuery()
 
