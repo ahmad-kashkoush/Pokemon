@@ -7,6 +7,7 @@ import TypeBadge from '@/components/TypeBadge.vue'
 import ContentCard from '@/components/ContentCard.vue'
 import StatBar from '@/components/StatBar.vue'
 import MoveBadge from '@/components/MoveBadge.vue'
+import NotFoundView from './NotFoundView.vue'
 
 const favoritesStore = useFavoritesStore()
 const { data: pokemon, isLoading, isError } = usePokemonDetailsQuery()
@@ -66,22 +67,17 @@ const toggleFavorite = () => {
 
 </script>
 <template>
-  <div v-if="pokemon" :class="getPrimaryTypeColor(pokemon)" class="min-h-screen">
-    <!-- Loading State -->
-    <div v-if="isLoading" class="flex items-center justify-center h-screen">
-      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
-    </div>
+  <!-- Loading State -->
+  <div v-if="isLoading" class="flex items-center justify-center h-screen">
+    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-500"></div>
+  </div>
 
-    <!-- Error State -->
-    <div v-else-if="isError" class="flex items-center justify-center h-screen">
-      <div class="text-center">
-        <p class="text-white mb-4">Error loading Pokemon details</p>
-        <BackButton class="!px-4 !py-2 !bg-white !bg-opacity-20 !text-white !rounded-lg" />
-      </div>
-    </div>
+  <!-- Error State - Show NotFound component -->
+  <NotFoundView v-else-if="isError" />
 
-    <!-- Pokemon Details -->
-    <div v-else-if="pokemon" class="pb-20">
+  <!-- Pokemon Details -->
+  <div v-else-if="pokemon" :class="getPrimaryTypeColor(pokemon)" class="min-h-screen">
+    <div class="pb-20">
       <!-- Navigation -->
       <div class="flex items-center justify-between p-4 text-white">
         <BackButton />

@@ -19,6 +19,11 @@ const router = createRouter({
       name: 'favorites',
       component: () => import('../views/FavoriteView.vue'),
     },
+    {
+      path: '/:catchAll(.*)',
+      name: 'catch-all',
+      component: () => import('../views/NotFoundView.vue'),
+    },
   ],
 })
 
