@@ -23,7 +23,11 @@ export const useFilteredPokemonList = (
     const search = searchTerm.value.toLowerCase()
 
     return pokemonList.value.filter((pokemon) => {
-      return pokemon.name.toLowerCase().includes(search) || pokemon.id.toString().includes(search)
+      return (
+        pokemon.name.toLowerCase().includes(search) ||
+        pokemon.id.toString().includes(search) ||
+        pokemon.types.some((type) => type.type.name.toLowerCase().includes(search))
+      )
     })
   })
 }

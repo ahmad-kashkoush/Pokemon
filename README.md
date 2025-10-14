@@ -59,7 +59,8 @@ npm run lint
 
 ### Nice to Have
 
-- todo
+- [x] Some trainers are forgetful, and don’t remember the name or number of a pokemon. Searching by type (such as “fire”) should also be possible.
+
 
 ## Demo
 
