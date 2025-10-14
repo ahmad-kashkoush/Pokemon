@@ -5,6 +5,7 @@ import { usePokemonListQuery, useFilteredPokemonList } from '../api/pokemon.quer
 import PokemonCard from './PokemonCard.vue'
 import AppLoader from '@/components/app/AppLoader.vue'
 import AppError from '@/components/app/AppError.vue'
+import { useToast } from 'vue-toastification'
 
 interface Props {
   searchTerm: string
@@ -13,7 +14,7 @@ interface Props {
 const props = defineProps<Props>()
 const searchTermRef = computed(() => props.searchTerm)
 const router = useRouter()
-
+const toast = useToast();
 const { data: pokemonList, error, isLoading, refetch } = usePokemonListQuery()
 
 const filteredPokemon = useFilteredPokemonList(pokemonList, searchTermRef)
@@ -25,13 +26,10 @@ const handleRetry = () => {
 }
 
 const handlePokemonClick = (pokemon: { id: number }) => {
-  console.log('Navigating to Pokemon ID:', pokemon.id)
-  console.log('Target URL:', `/pokemons/${pokemon.id}`)
   try {
-    router.push(`/pokemons/${pokemon.id}`)
-    console.log('Navigation successful')
+    router.push(`/${pokemon.id}`)
   } catch (error) {
-    console.error('Navigation error:', error)
+    toast.error(`Navigation error: ${error}`)
   }
 }
 </script>
