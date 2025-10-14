@@ -8,6 +8,7 @@ import ContentCard from '@/components/ContentCard.vue'
 import StatBar from '@/components/StatBar.vue'
 import MoveBadge from '@/components/MoveBadge.vue'
 import NotFoundView from './NotFoundView.vue'
+import AppLoader from '@/components/app/appLoader.vue'
 
 const favoritesStore = useFavoritesStore()
 const { data: pokemon, isLoading, isError } = usePokemonDetailsQuery()
@@ -68,13 +69,10 @@ const toggleFavorite = () => {
 </script>
 <template>
   <!-- Loading State -->
-  <div v-if="isLoading" class="flex items-center justify-center h-screen">
-    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-500"></div>
-  </div>
+  <AppLoader :isLoading="isLoading" />
 
   <!-- Error State - Show NotFound component -->
-  <NotFoundView v-else-if="isError" />
-
+  <NotFoundView v-if="isError" />
   <!-- Pokemon Details -->
   <div v-else-if="pokemon" :class="getPrimaryTypeColor(pokemon)" class="min-h-screen">
     <div class="pb-20">

@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePokemonListQuery, useFilteredPokemonList } from '../api/pokemon.query'
 import PokemonCard from './PokemonCard.vue'
+import AppLoader from '@/components/app/appLoader.vue'
 
 interface Props {
   searchTerm: string
@@ -31,12 +32,8 @@ const handlePokemonClick = (pokemon: { id: number }) => {
 </script>
 <template>
   <div class="px-4 pb-6">
-    <div v-if="isLoading" class="text-center py-8">
-      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto"></div>
-      <p class="mt-4 text-gray-600">Loading Pokémon...</p>
-    </div>
-
-    <div v-else-if="error" class="text-center py-8 text-red-500">
+    <AppLoader :isLoading="isLoading" />
+    <div v-if="error" class="text-center py-8 text-red-500">
       Error loading Pokémon: {{ error.message }}
     </div>
 
