@@ -91,7 +91,3 @@ const handlePokemonClick = (pokemon: { id: number }) => {
     </div>
   </main>
 </template>
-
-<style scoped>
-/* All styling is handled by Tailwind CSS classes */
-</style>

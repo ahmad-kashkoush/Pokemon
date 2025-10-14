@@ -30,7 +30,3 @@ defineExpose({
   searchValue
 })
 </script>
-
-<style scoped>
-/* Tailwind classes handle all styling */
-</style>

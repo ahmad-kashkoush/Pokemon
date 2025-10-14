@@ -55,4 +55,3 @@ const handleSearch = (value: string) => {
     <PokemonList :search-term="searchTerm" />
   </main>
 </template>
-<style scoped></style>
