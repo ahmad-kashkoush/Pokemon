@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/vue-query'
 import { computed, type Ref } from 'vue'
+import { useRoute } from 'vue-router'
 import { PokemonService } from './pokemon.service'
 
 export interface Pokemon {
@@ -35,10 +36,17 @@ export const useFilteredPokemonList = (
     const search = searchTerm.value.toLowerCase()
 
     return pokemonList.value.filter((pokemon) => {
-      return (
-        pokemon.name.toLowerCase().includes(search) ||
-        pokemon.id.toString().includes(search)
-      )
+      return pokemon.name.toLowerCase().includes(search) || pokemon.id.toString().includes(search)
     })
+  })
+}
+
+export const usePokemonDetailsQuery = () => {
+  const route = useRoute()
+  const pokemonId = computed(() => route.params.id as string)
+  return useQuery({
+    queryKey: ['pokemon-details', pokemonId],
+    queryFn: () => PokemonService.getPokemonDetails(pokemonId.value),
+    enabled: computed(() => !!pokemonId.value),
   })
 }
