@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useTeamStore } from '@/stores/team.store'
-import BackButton from '@/components/BackButton.vue'
+import AppBackButton from '@/components/app/AppBackButton.vue'
 import PokemonCard from '@/components/PokemonCard.vue'
 
 const router = useRouter()
@@ -20,7 +20,7 @@ const handlePokemonClick = (pokemon: { id: number }) => {
   <main class="min-h-screen bg-gradient-to-br from-purple-400 to-purple-500">
     <!-- Header -->
     <div class="px-4 py-3 pt-12 flex items-center gap-3">
-      <BackButton />
+      <AppBackButton />
       <h1 class="text-3xl font-bold text-white">Mijn Team</h1>
       <div class="ml-auto text-white text-sm">
         {{ teamStore.teamCount }}/{{ teamStore.MAX_TEAM_SIZE }}

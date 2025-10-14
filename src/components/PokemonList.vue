@@ -3,8 +3,8 @@ import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePokemonListQuery, useFilteredPokemonList } from '../api/pokemon.query'
 import PokemonCard from './PokemonCard.vue'
-import AppLoader from '@/components/app/appLoader.vue'
-import AppError from '@/components/app/appError.vue'
+import AppLoader from '@/components/app/AppLoader.vue'
+import AppError from '@/components/app/AppError.vue'
 
 interface Props {
   searchTerm: string

@@ -4,13 +4,13 @@ import { useFavoritesStore } from '@/stores/favorite.store'
 import { useTeamStore } from '@/stores/team.store'
 import ImageComponent from '@/components/ImageComponent.vue'
 import { useToast } from 'vue-toastification'
-import BackButton from '@/components/BackButton.vue'
+import AppBackButton from '@/components/app/AppBackButton.vue'
 import TypeBadge from '@/components/TypeBadge.vue'
 import ContentCard from '@/components/ContentCard.vue'
 import StatBar from '@/components/StatBar.vue'
 import MoveBadge from '@/components/MoveBadge.vue'
-import AppLoader from '@/components/app/appLoader.vue'
-import AppError from '@/components/app/appError.vue'
+import AppLoader from '@/components/app/AppLoader.vue'
+import AppError from '@/components/app/AppError.vue'
 
 const favoritesStore = useFavoritesStore()
 const teamStore = useTeamStore()
@@ -104,7 +104,7 @@ const toggleTeamMember = () => {
     <div class="pb-20">
       <!-- Navigation -->
       <div class="flex items-center justify-between p-4 text-white">
-        <BackButton />
+        <AppBackButton />
         <h1 class="text-lg font-semibold">Detail pokemon</h1>
         <div class="flex gap-2">
           <!-- Team Button -->

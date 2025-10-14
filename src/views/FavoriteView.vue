@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useFavoritesStore } from '@/stores/favorite.store'
-import BackButton from '@/components/BackButton.vue'
+import AppBackButton from '@/components/app/AppBackButton.vue'
 import PokemonCard from '@/components/PokemonCard.vue'
 
 const router = useRouter()
@@ -20,7 +20,7 @@ const handlePokemonClick = (pokemon: { id: number }) => {
   <main class="min-h-screen bg-gradient-to-br from-teal-400 to-teal-500">
     <!-- Header -->
     <div class="px-4 py-3 pt-12 flex items-center gap-3">
-      <BackButton />
+      <AppBackButton />
       <h1 class="text-3xl font-bold text-white">Favorieten</h1>
     </div>
 

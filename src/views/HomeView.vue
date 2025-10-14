@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import SearchBar from '@/components/SearchBar.vue'
+import AppSearchBar from '@/components/app/AppSearchBar.vue'
 import PokemonList from '@/components/PokemonList.vue'
 import NavigationCard from '@/components/NavigationCard.vue'
 import { useFavoritesStore } from '@/stores/favorite.store'
@@ -38,7 +38,7 @@ const handleSearch = (value: string) => {
 
     <div class="px-4 pt-4 pb-2">
       <!-- Search Bar -->
-      <SearchBar @search="handleSearch" />
+      <AppSearchBar @search="handleSearch" />
 
       <!-- Navigation Cards -->
       <div class="grid grid-cols-2 gap-3 mt-4 mb-6">
