@@ -3,8 +3,10 @@ import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import SearchBar from '@/components/SearchBar.vue'
 import PokemonList from '@/components/PokemonList.vue'
+import { useFavoritesStore } from '@/stores/favorites'
 
 const searchTerm = ref('')
+const favoritesStore = useFavoritesStore()
 
 const handleSearch = (value: string) => {
   searchTerm.value = value
@@ -48,7 +50,7 @@ const handleSearch = (value: string) => {
         <RouterLink to="/favorites" class="block">
           <div class="bg-gradient-to-br from-teal-400 to-teal-500 p-4 rounded-2xl text-white shadow-lg">
             <h3 class="font-semibold text-lg">Favorieten</h3>
-            <p class="text-teal-100 text-sm mt-1">12 pokémons</p>
+            <p class="text-teal-100 text-sm mt-1">{{ favoritesStore.favoritesCount }} pokémons</p>
           </div>
         </RouterLink>
       </div>

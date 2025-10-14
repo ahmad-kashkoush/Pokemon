@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
 import { usePokemonDetailsQuery } from '@/api/pokemon.query'
+import { useFavoritesStore } from '@/stores/favorites'
 
 const router = useRouter()
+const favoritesStore = useFavoritesStore()
 const { data: pokemon, isLoading, isError } = usePokemonDetailsQuery()
 
 // Helper functions
@@ -66,8 +68,19 @@ const getStatBarColor = (statValue: number) => {
   return 'bg-red-500'
 }
 
-const getTotalStats = (stats: any[]) => {
+const getTotalStats = (stats: Array<{ base_stat: number }>) => {
   return stats.reduce((total, stat) => total + stat.base_stat, 0)
+}
+
+const toggleFavorite = () => {
+  if (pokemon.value) {
+    favoritesStore.toggleFavorite({
+      id: pokemon.value.id,
+      name: pokemon.value.name,
+      sprites: pokemon.value.sprites,
+      types: pokemon.value.types
+    })
+  }
 }
 
 </script>
@@ -96,8 +109,10 @@ const getTotalStats = (stats: any[]) => {
           </svg>
         </button>
         <h1 class="text-lg font-semibold">Detail pokemon</h1>
-        <button class="p-2">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button @click="toggleFavorite" class="p-2">
+          <svg class="w-6 h-6"
+            :class="pokemon && favoritesStore.isFavorite(pokemon.id) ? 'text-red-500 fill-current' : 'text-white'"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
           </svg>
