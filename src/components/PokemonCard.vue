@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import TypeBadge from './TypeBadge.vue'
-import { useFavoritesStore } from '@/stores/favorites'
-import { useTeamStore } from '@/stores/team'
+import { useFavoritesStore } from '@/stores/favorite.store'
+import { useTeamStore } from '@/stores/team.store'
 
 interface Pokemon {
   id: number

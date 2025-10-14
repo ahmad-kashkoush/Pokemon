@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { useFavoritesStore } from '@/stores/favorites'
+import { useFavoritesStore } from '@/stores/favorite.store'
 import BackButton from '@/components/BackButton.vue'
 import PokemonCard from '@/components/PokemonCard.vue'
 
@@ -44,7 +44,8 @@ const handlePokemonClick = (pokemon: { id: number }) => {
 
       <!-- Favorites List -->
       <div v-else class="space-y-3">
-        <PokemonCard v-for="poke in favoritesList" :key="poke.id" :pokemon="poke" @click="handlePokemonClick" />
+        <PokemonCard v-for="poke in favoritesList" :showIndicators="false" :key="poke.id" :pokemon="poke"
+          @click="handlePokemonClick" />
       </div>
     </div>
   </main>

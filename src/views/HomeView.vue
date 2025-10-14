@@ -3,10 +3,12 @@ import { ref } from 'vue'
 import SearchBar from '@/components/SearchBar.vue'
 import PokemonList from '@/components/PokemonList.vue'
 import NavigationCard from '@/components/NavigationCard.vue'
-import { useFavoritesStore } from '@/stores/favorites'
+import { useFavoritesStore } from '@/stores/favorite.store'
+import { useTeamStore } from '@/stores/team.store'
 
 const searchTerm = ref('')
 const favoritesStore = useFavoritesStore()
+const teamStore = useTeamStore()
 
 const handleSearch = (value: string) => {
   searchTerm.value = value
@@ -40,7 +42,8 @@ const handleSearch = (value: string) => {
 
       <!-- Navigation Cards -->
       <div class="grid grid-cols-2 gap-3 mt-4 mb-6">
-        <NavigationCard to="/team" title="Mijn team" subtitle="6 pokémons"
+        <NavigationCard to="/team" title="Mijn team"
+          :subtitle="`${teamStore.teamCount}/${teamStore.MAX_TEAM_SIZE} pokémons`"
           gradient="bg-gradient-to-br from-purple-500 to-purple-600" />
 
         <NavigationCard to="/favorites" title="Favorieten" :subtitle="`${favoritesStore.favoritesCount} pokémons`"

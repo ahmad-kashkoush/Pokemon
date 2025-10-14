@@ -20,6 +20,11 @@ const router = createRouter({
       component: () => import('../views/FavoriteView.vue'),
     },
     {
+      path: '/team',
+      name: 'team',
+      component: () => import('../views/TeamView.vue'),
+    },
+    {
       path: '/:catchAll(.*)',
       name: 'catch-all',
       component: () => import('../views/NotFoundView.vue'),
