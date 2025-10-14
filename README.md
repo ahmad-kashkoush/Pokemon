@@ -51,6 +51,8 @@ npm run lint
 
 ### App Demonstration
 
-https://github.com/user-attachments/assets/2025-10-14%2017-21-17.mp4
 
-_Watch the Pokemon Trainer app in action! This demo shows the complete functionality including browsing Pokemon, viewing details with image lightbox, managing favorites, and the responsive UI design._
+
+https://github.com/user-attachments/assets/aa8edc9a-13d9-455c-8d5a-35e20440c6e3
+
+
