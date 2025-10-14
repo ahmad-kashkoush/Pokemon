@@ -69,4 +69,7 @@ npm run lint
 
 ### App Demonstration
 
-https://github.com/user-attachments/assets/aa8edc9a-13d9-455c-8d5a-35e20440c6e3
+
+
+https://github.com/user-attachments/assets/aa7115f6-fc8f-4e4f-a78d-c407f8992bf5
+
