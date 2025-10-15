@@ -1,8 +1,8 @@
+import type { Pokemon } from '@/types/pokemon.type'
 import { useQuery } from '@tanstack/vue-query'
-import { computed, type Ref } from 'vue'
+import { computed, toValue, type MaybeRef, type Ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { PokemonService } from './pokemon.service'
-import type { Pokemon } from '@/types/pokemon.type'
 
 export const usePokemonListQuery = () => {
   return useQuery({
@@ -39,5 +39,12 @@ export const usePokemonDetailsQuery = () => {
     queryKey: ['pokemon-details', pokemonId],
     queryFn: () => PokemonService.getPokemonDetails(pokemonId.value),
     enabled: computed(() => !!pokemonId.value),
+  })
+}
+export const useEvolutionChainQuery = (url: MaybeRef<string>) => {
+  return useQuery({
+    queryKey: ['evolution-chain', url],
+    queryFn: () => PokemonService.getEvolutionChainWithDetails(toValue(url)),
+    enabled: computed(() => !!toValue(url)),
   })
 }

@@ -1,21 +1,24 @@
 <script lang="ts" setup>
-import { usePokemonDetailsQuery } from '@/api/pokemon.query'
+import { useEvolutionChainQuery, usePokemonDetailsQuery } from '@/api/pokemon.query'
+import AppBackButton from '@/components/app/AppBackButton.vue'
+import AppError from '@/components/app/AppError.vue'
+import AppLoader from '@/components/app/AppLoader.vue'
+import ContentCard from '@/components/ContentCard.vue'
+import MoveBadge from '@/components/MoveBadge.vue'
+import PokemonImageViewer from '@/components/PokemonImage/PokemonImageViewer.vue'
+import PokemonList from '@/components/PokemonList.vue'
+import StatBar from '@/components/StatBar.vue'
+import TypeBadge from '@/components/TypeBadge.vue'
 import { useFavoritesStore } from '@/stores/favorite.store'
 import { useTeamStore } from '@/stores/team.store'
 import { useToast } from 'vue-toastification'
-import AppBackButton from '@/components/app/AppBackButton.vue'
-import TypeBadge from '@/components/TypeBadge.vue'
-import ContentCard from '@/components/ContentCard.vue'
-import StatBar from '@/components/StatBar.vue'
-import MoveBadge from '@/components/MoveBadge.vue'
-import AppLoader from '@/components/app/AppLoader.vue'
-import AppError from '@/components/app/AppError.vue'
-import PokemonImageViewer from '@/components/PokemonImage/PokemonImageViewer.vue'
 
 const favoritesStore = useFavoritesStore()
 const teamStore = useTeamStore()
 const toast = useToast()
 const { data: pokemon, isLoading, isError, error, refetch } = usePokemonDetailsQuery()
+
+const { data: evolutionChainPokemons, isLoading: isEvolutionLoading, isError: isEvolutionError } = useEvolutionChainQuery(() => pokemon.value?.species?.url);
 
 const handleRetry = () => {
   refetch()
@@ -231,6 +234,11 @@ const toggleTeamMember = () => {
           </div>
         </ContentCard>
       </div>
+      <div class=" pt-6">
+        <h3 class="text-white text-xl font-bold text-gray-900 px-4">Evolutie</h3>
+        <PokemonList v-if="!isEvolutionError && !isEvolutionLoading" :pokemon="evolutionChainPokemons || []" />
+      </div>
+
     </div>
   </div>
 </template>
