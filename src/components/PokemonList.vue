@@ -6,9 +6,11 @@ import PokemonCard from './PokemonCard.vue'
 import AppLoader from '@/components/app/AppLoader.vue'
 import AppError from '@/components/app/AppError.vue'
 import { useToast } from 'vue-toastification'
+import type { SortOption } from '@/components/app/AppSortModal.vue'
 
 interface Props {
   searchTerm: string
+  sortOption: SortOption
 }
 
 const props = defineProps<Props>()
@@ -19,7 +21,24 @@ const { data: pokemonList, error, isLoading, refetch } = usePokemonListQuery()
 
 const filteredPokemon = useFilteredPokemonList(pokemonList, searchTermRef)
 
-const displayPokemon = computed(() => filteredPokemon.value)
+const displayPokemon = computed(() => {
+  const pokemon = [...(filteredPokemon.value || [])]
+
+  // Sort based on the selected option
+  if (props.sortOption.key === 'name') {
+    pokemon.sort((a, b) => {
+      const comparison = a.name.localeCompare(b.name)
+      return props.sortOption.direction === 'asc' ? comparison : -comparison
+    })
+  } else if (props.sortOption.key === 'id') {
+    pokemon.sort((a, b) => {
+      const comparison = a.id - b.id
+      return props.sortOption.direction === 'asc' ? comparison : -comparison
+    })
+  }
+
+  return pokemon
+})
 
 const handleRetry = () => {
   refetch()
