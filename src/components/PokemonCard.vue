@@ -29,7 +29,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   clickable: true,
-  showIndicators: true
+  showIndicators: false
 })
 
 const emit = defineEmits<{
@@ -52,7 +52,7 @@ const formatName = (name: string) => {
 
 <template>
   <div @click="handleClick" :class="[
-    'bg-white rounded-2xl p-4 mt-4 flex items-center gap-4 shadow-sm relative',
+    'card bg-white rounded-2xl p-2 flex items-center gap-2 shadow-sm relative',
     clickable ? 'hover:shadow-md transition-shadow cursor-pointer' : ''
   ]">
     <!-- Status Indicators -->
@@ -77,12 +77,12 @@ const formatName = (name: string) => {
     </div>
 
     <!-- Pokemon Image -->
-    <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
+    <div class=" w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0">
       <img v-if="pokemon.sprites?.front_default" :src="pokemon.sprites.front_default" :alt="pokemon.name"
-        class="w-12 h-12 object-contain" loading="lazy" />
+        class="w-full h-full object-cover" loading="lazy" />
       <img v-else-if="pokemon.sprites?.other?.['official-artwork']?.front_default"
         :src="pokemon.sprites.other['official-artwork'].front_default" :alt="pokemon.name"
-        class="w-12 h-12 object-contain" loading="lazy" />
+        class="w-full h-full object-cover" loading="lazy" />
       <div v-else class="text-2xl text-gray-400">?</div>
     </div>
 
@@ -105,3 +105,8 @@ const formatName = (name: string) => {
     </div>
   </div>
 </template>
+<style scoped>
+.card {
+  margin-top: 10px;
+}
+</style>
