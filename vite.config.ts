@@ -13,7 +13,7 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-  base: '/pokemons/',
+  base: '/pokemon-trainer/',
   build: {
     outDir: 'dist',
   },

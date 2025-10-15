@@ -11,17 +11,17 @@ const router = createRouter({
     {
       path: '/pokemons/:id',
       name: 'pokemon-details',
-      component: () => import('@/views/PokemonDetailsWrapper.vue'),
+      component: () => import('@/views/pokemonDetails/PokemonDetailsWrapper.vue'),
     },
     {
       path: '/favorites',
       name: 'favorites',
-      component: () => import('@/views/FavoriteView.vue'),
+      component: () => import('@/views/favorite/FavoriteView.vue'),
     },
     {
       path: '/team',
       name: 'team',
-      component: () => import('@/views/TeamView.vue'),
+      component: () => import('@/views/team/TeamView.vue'),
     },
     {
       path: '/:catchAll(.*)',

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import PokemonExplorerView from './PokemonExplorerView.vue'
-import PokemonDetailsView from './PokemonDetailsView.vue'
+import PokemonExplorerView from '@/views/PokemonExplorerView.vue'
+import PokemonDetailsView from '@/views/pokemonDetails/PokemonDetailsView.vue'
 import { useScreenSize } from '@/composables/useScreenSize'
 
 const { isWideScreen } = useScreenSize(800)

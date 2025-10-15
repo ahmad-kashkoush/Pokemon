@@ -2,9 +2,9 @@
 import AppFilterModal from '@/components/app/AppFilterModal.vue'
 import AppSearchBar from '@/components/app/AppSearchBar.vue'
 import AppSortModal from '@/components/app/AppSortModal.vue'
-import CombinedFavoriteView from '@/components/CombinedFavoriteView.vue'
-import CombinedTeamView from '@/components/CombinedTeamView.vue'
-import CombinedViewBackButton from '@/components/CombinedViewBackButton.vue'
+import CombinedFavoriteView from '@/views/favorite/CombinedFavoriteView.vue'
+import CombinedTeamView from '@/views/team/CombinedTeamView.vue'
+import CombinedViewBackButton from '@/components/app/CombinedViewBackButton.vue'
 import ExplorerHeader from '@/components/ExplorerHeader.vue'
 import NavigationCard from '@/components/NavigationCard.vue'
 import PokemonList from '@/components/PokemonList.vue'
@@ -14,7 +14,7 @@ import { useFavoritesStore } from '@/stores/favorite.store'
 import { useTeamStore } from '@/stores/team.store'
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import PokemonDetailsView from './PokemonDetailsView.vue'
+import PokemonDetailsView from '@/views/pokemonDetails/PokemonDetailsView.vue'
 
 const route = useRoute()
 const favoritesStore = useFavoritesStore()
