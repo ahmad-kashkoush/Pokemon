@@ -16,13 +16,12 @@ const pokemonExplorer = usePokemonExplorer();
 </script>
 
 <template>
-  <main class="min-h-screen bg-gray-50">
+  <main class="page-layout">
     <!-- Header -->
-    <div class="bg-white px-4 py-3 flex items-center justify-between shadow-sm">
+    <div class="header">
       <h1 class="text-2xl font-bold text-gray-900">Pokédex</h1>
       <div class="flex gap-2">
-        <button @click="pokemonExplorer.handleFilterClick"
-          class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg relative">
+        <button @click="pokemonExplorer.handleFilterClick" class="btn-icon relative">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.707A1 1 0 013 7V4z" />
@@ -32,7 +31,7 @@ const pokemonExplorer = usePokemonExplorer();
             {{ pokemonExplorer.selectedTypeFilters.value.length }}
           </span>
         </button>
-        <button @click="pokemonExplorer.handleSortClick" class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+        <button @click="pokemonExplorer.handleSortClick" class="btn-icon">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
@@ -41,7 +40,7 @@ const pokemonExplorer = usePokemonExplorer();
       </div>
     </div>
 
-    <div class="px-4 pt-4 pb-2">
+    <div class="container">
       <!-- Search Bar -->
       <AppSearchBar @search="pokemonExplorer.handleSearch" />
 

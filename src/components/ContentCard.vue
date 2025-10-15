@@ -25,7 +25,7 @@ const titleClasses = computed(() => {
 <template>
   <div>
     <h3 :class="titleClasses">{{ title }}</h3>
-    <div class="bg-white rounded-2xl p-6 shadow-lg">
+    <div class="card p-6">
       <slot />
     </div>
   </div>

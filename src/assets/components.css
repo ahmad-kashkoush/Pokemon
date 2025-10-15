@@ -1,0 +1,74 @@
+/* Simple shared styles to reduce redundancy */
+
+/* Most common button pattern */
+.btn-icon {
+  padding: 0.5rem;
+  color: #4b5563;
+  border-radius: 0.5rem;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.btn-icon:hover {
+  background-color: #f3f4f6;
+}
+
+/* Most common card pattern */
+.card {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Common page layout */
+.page-layout {
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+/* Common header pattern */
+.header {
+  background-color: white;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Common content container */
+.container {
+  padding: 1rem;
+}
+
+/* Hero section patterns */
+.hero-purple {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+}
+
+.hero-teal {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+}
+
+.hero-header {
+  padding: 0.75rem 1rem 3rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Common button patterns */
+.btn-danger {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background-color: #ef4444;
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+}

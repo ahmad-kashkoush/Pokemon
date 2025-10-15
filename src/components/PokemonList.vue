@@ -39,7 +39,7 @@ const handleRetry = () => {
 }
 </script>
 <template>
-  <div class="px-4 pb-6">
+  <div class="container">
     <AppLoader :isLoading="isLoading" />
     <AppError :hasError="!!error" :errorMessage="error?.message" @retry="handleRetry" />
 

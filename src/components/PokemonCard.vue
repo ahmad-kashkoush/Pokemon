@@ -47,11 +47,11 @@ const formatName = (name: string) => {
 
 <template>
   <div @click="handleClick" :class="[
-    'card bg-white rounded-2xl p-2 flex items-center gap-2 shadow-sm relative',
+    'card p-2 flex items-center gap-2 relative pokemon-card-item',
     clickable ? 'hover:shadow-md transition-shadow cursor-pointer' : ''
   ]">
     <!-- Pokemon Image -->
-    <div class=" w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0">
+    <div class="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0">
       <img v-if="pokemon.sprites?.front_default" :src="pokemon.sprites.front_default" :alt="pokemon.name"
         class="w-full h-full object-cover" loading="lazy" />
       <img v-else-if="pokemon.sprites?.other?.['official-artwork']?.front_default"
@@ -78,7 +78,7 @@ const formatName = (name: string) => {
   </div>
 </template>
 <style scoped>
-.card {
+.pokemon-card-item {
   margin-top: 10px;
 }
 </style>

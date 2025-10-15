@@ -11,9 +11,9 @@ const favoritesList = computed(() => favoritesStore.favoritePokemons)
 </script>
 
 <template>
-  <main class="min-h-screen bg-gradient-to-br from-teal-400 to-teal-500">
+  <main class="hero-teal">
     <!-- Header -->
-    <div class="px-4 py-3 pt-12 flex items-center gap-3">
+    <div class="hero-header">
       <AppBackButton />
       <h1 class="text-3xl font-bold text-white">Favorieten</h1>
     </div>
