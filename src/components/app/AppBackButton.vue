@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import IconArrowLeft from '@/components/icons/IconArrowLeft.vue';
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -30,8 +31,6 @@ const buttonClasses = computed(() => {
 
 <template>
   <button @click="goBack" :class="[buttonClasses, 'cursor-pointer']" aria-label="Go back">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-    </svg>
+    <IconArrowLeft />
   </button>
 </template>

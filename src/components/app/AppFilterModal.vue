@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import IconCheck from '@/components/icons/IconCheck.vue'
+import IconClose from '@/components/icons/IconClose.vue'
 import { ref, watch } from 'vue'
 
 export interface FilterOption {
@@ -85,10 +87,8 @@ watch(() => props.selectedFilters, (newFilters) => {
     <div class="flex items-center justify-between p-6 pb-4">
       <h2 class="text-xl font-semibold text-gray-900">Filteren op type</h2>
       <button @click="handleClose"
-        class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
-        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
+        class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors text-gray-600">
+        <IconClose />
       </button>
     </div>
 
@@ -116,12 +116,7 @@ watch(() => props.selectedFilters, (newFilters) => {
           ]"></div>
           <span class="font-medium text-sm">{{ type.label }}</span>
 
-          <svg v-if="selectedTypes.includes(type.value)" class="w-5 h-5 text-teal-600 ml-auto" fill="currentColor"
-            viewBox="0 0 20 20">
-            <path fill-rule="evenodd"
-              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-              clip-rule="evenodd" />
-          </svg>
+          <IconCheck v-if="selectedTypes.includes(type.value)" class="text-teal-600 ml-auto" />
         </button>
       </div>
     </div>

@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import IconCheck from '@/components/icons/IconCheck.vue'
+import IconClose from '@/components/icons/IconClose.vue'
+import IconSortAlphabetical from '@/components/icons/IconSortAlphabetical.vue'
+import IconSortNumerical from '@/components/icons/IconSortNumerical.vue'
 import { ref, watch } from 'vue'
 
 export interface SortOption {
@@ -91,10 +95,8 @@ watch(() => props.selectedSort, (newSort) => {
     <div class="flex items-center justify-between p-6 pb-4">
       <h2 class="text-xl font-semibold text-gray-900">Sorteren op</h2>
       <button @click="handleClose"
-        class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
-        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
+        class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors text-gray-600">
+        <IconClose />
       </button>
     </div>
 
@@ -108,23 +110,16 @@ watch(() => props.selectedSort, (newSort) => {
             : 'hover:bg-gray-50 text-gray-900'
         ]">
           <div class="flex items-center gap-3">
-            <svg :class="[
-              'w-5 h-5',
+            <div :class="[
               option.direction === 'asc' ? 'rotate-0' : 'rotate-180'
-            ]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="option.key === 'name'
-                ? 'M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4'
-                : 'M7 11l5-5m0 0l5 5m-5-5v12'" />
-            </svg>
+            ]">
+              <IconSortAlphabetical v-if="option.key === 'name'" />
+              <IconSortNumerical v-else />
+            </div>
             <span class="font-medium">{{ option.label }}</span>
           </div>
 
-          <svg v-if="selectedOption.value === option.value" class="w-6 h-6 text-teal-600" fill="currentColor"
-            viewBox="0 0 20 20">
-            <path fill-rule="evenodd"
-              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-              clip-rule="evenodd" />
-          </svg>
+          <IconCheck v-if="selectedOption.value === option.value" class="w-6 h-6 text-teal-600" />
         </button>
       </div>
     </div>
