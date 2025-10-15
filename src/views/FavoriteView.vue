@@ -48,5 +48,8 @@ const handlePokemonClick = (pokemon: { id: number }) => {
           @click="handlePokemonClick" />
       </div>
     </div>
+
+    <!-- Favorites List -->
+    <PokemonList v-else :pokemon="favoritesList" emptyMessage="Geen favorieten gevonden" />
   </main>
 </template>

@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useTeamStore } from '@/stores/team.store'
 import AppBackButton from '@/components/app/AppBackButton.vue'
-import PokemonCard from '@/components/PokemonCard.vue'
+import PokemonList from '@/components/PokemonList.vue'
 
 const router = useRouter()
 const teamStore = useTeamStore()
@@ -46,17 +46,9 @@ const handlePokemonClick = (pokemon: { id: number }) => {
         </button>
       </div>
 
-      <!-- Team List -->
-      <div v-else class="space-y-3">
-
-
-
-        <!-- Team Pokemon Cards -->
-        <div class="space-y-3">
-          <div v-for="(pokemon) in teamList" :key="pokemon.id" class="relative">
-            <PokemonCard :pokemon="pokemon" :showIndicators="false" @click="handlePokemonClick" />
-          </div>
-        </div>
+    <!-- Team List -->
+    <div v-else>
+      <PokemonList :pokemon="teamList" emptyMessage="Geen teamleden gevonden" />
 
         <!-- Clear Team Button -->
         <div class="pt-6">
