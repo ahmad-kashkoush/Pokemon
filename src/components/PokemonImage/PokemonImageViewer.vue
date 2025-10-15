@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import ImageLightbox from './ImageLightbox.vue'
-import ImageNavigation from './ImageNavigation.vue'
+import ImageLightbox from '@/components/PokemonImage/ImageLightbox.vue'
+import ImageNavigation from '@/components/PokemonImage/ImageNavigation.vue'
 import { useImageExtraction } from '@/composables/useImageExtraction'
 
 interface Props {

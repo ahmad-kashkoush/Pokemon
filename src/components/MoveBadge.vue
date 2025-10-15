@@ -5,7 +5,7 @@ interface Props {
   variant?: 'purple' | 'teal' | 'yellow' | 'blue' | 'green' | 'red'
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   variant: 'purple'
 })
 

@@ -70,6 +70,8 @@ npm run lint
 - [x] Besides their favourites, trainers would also like to manage their team of Pokémon. A trainer’s team is limited to 6 Pokémon.
 - [x] Trainers would like to see more than one picture for Pokémon if available on the detail screen (think carousel like UI).
 
+- [x] Trainers would like to see the evolutions of a Pokémon if available, from the detail screen. Given a details API response, you’ll need to get the species detail first using https://pokeapi.co/api/v2/pokemon-species/133, from which you can get the evolution chain using https://pokeapi.co/api/v2/evolution-chain/67.
+
 
 ## Demo
 
