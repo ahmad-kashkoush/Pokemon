@@ -11,6 +11,7 @@ import type { SortOption } from '@/components/app/AppSortModal.vue'
 interface Props {
   searchTerm: string
   sortOption: SortOption
+  typeFilters: string[]
 }
 
 const props = defineProps<Props>()
@@ -22,7 +23,16 @@ const { data: pokemonList, error, isLoading, refetch } = usePokemonListQuery()
 const filteredPokemon = useFilteredPokemonList(pokemonList, searchTermRef)
 
 const displayPokemon = computed(() => {
-  const pokemon = [...(filteredPokemon.value || [])]
+  let pokemon = [...(filteredPokemon.value || [])]
+
+  // Filter by types if any are selected
+  if (props.typeFilters.length > 0) {
+    pokemon = pokemon.filter(p =>
+      p.types.some(typeObj =>
+        props.typeFilters.includes(typeObj.type.name.toLowerCase())
+      )
+    )
+  }
 
   // Sort based on the selected option
   if (props.sortOption.key === 'name') {

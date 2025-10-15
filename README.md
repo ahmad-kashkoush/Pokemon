@@ -51,6 +51,8 @@ npm run lint
 
 ## Implemented requirements
 
+**Note**: Still in-progress
+
 ### Core
 
 - [x] Trainers can see a list of Pokémon with some general information, such as ==name, number, picture and types.==
