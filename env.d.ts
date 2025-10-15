@@ -24,3 +24,9 @@ declare module 'fslightbox-vue' {
   const FsLightbox: DefineComponent<FsLightboxProps>
   export default FsLightbox
 }
+
+declare module 'vue-spinner/src/PulseLoader.vue' {
+  import { DefineComponent } from 'vue'
+  const PulseLoader: DefineComponent<Record<string, unknown>, Record<string, unknown>, unknown>
+  export default PulseLoader
+}
