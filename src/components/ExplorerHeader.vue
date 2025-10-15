@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import { usePokemonExplorer } from '@/composables/usePokemonExplorer'
 
-const pokemonExplorer = usePokemonExplorer()
+interface Props {
+  pokemonExplorer?: ReturnType<typeof usePokemonExplorer>
+}
+
+const props = defineProps<Props>()
+const pokemonExplorer = props.pokemonExplorer
 </script>
 
 <template>
   <div class="header">
     <h1 class="text-2xl font-bold text-gray-900">Pokédex</h1>
-    <div class="flex gap-2">
+    <div class="flex gap-2" v-if="pokemonExplorer">
       <button @click="pokemonExplorer.handleFilterClick" class="btn-icon relative">
         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd"

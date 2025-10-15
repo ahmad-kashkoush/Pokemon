@@ -50,7 +50,7 @@ const showExplorerView = () => {
     <!-- Left Panel -->
     <div class="flex-1 border-r border-gray-200 overflow-auto">
       <main v-if="leftPanelView === 'explorer'" class="page-layout">
-        <ExplorerHeader />
+        <ExplorerHeader :pokemonExplorer="pokemonExplorer" />
         <div class="container">
           <AppSearchBar @search="pokemonExplorer.handleSearch" />
           <div class="grid grid-cols-2 gap-3 mt-4 mb-6">
@@ -99,7 +99,7 @@ const showExplorerView = () => {
 
   <!-- Narrow Screen -->
   <main v-else class="page-layout">
-    <ExplorerHeader />
+    <ExplorerHeader :pokemonExplorer="pokemonExplorer" />
     <div class="container">
       <AppSearchBar @search="pokemonExplorer.handleSearch" />
       <div class="grid grid-cols-2 gap-3 mt-4 mb-6">

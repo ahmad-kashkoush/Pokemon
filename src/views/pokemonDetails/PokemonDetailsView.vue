@@ -14,13 +14,15 @@ import TypeBadge from '@/components/TypeBadge.vue'
 import { useFavoritesStore } from '@/stores/favorite.store'
 import { useTeamStore } from '@/stores/team.store'
 import { useToast } from 'vue-toastification'
+import { computed } from 'vue'
 
 const favoritesStore = useFavoritesStore()
 const teamStore = useTeamStore()
 const toast = useToast()
 const { data: pokemon, isLoading, isError, error, refetch } = usePokemonDetailsQuery()
 
-const { data: evolutionChainPokemons, isLoading: isEvolutionLoading, isError: isEvolutionError } = useEvolutionChainQuery(() => pokemon.value?.species?.url);
+const evolutionChainUrl = computed(() => pokemon.value?.species?.url || '')
+const { data: evolutionChainPokemons, isLoading: isEvolutionLoading, isError: isEvolutionError } = useEvolutionChainQuery(evolutionChainUrl)
 
 const handleRetry = () => {
   refetch()
