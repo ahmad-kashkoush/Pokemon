@@ -10,7 +10,6 @@
 /* Mobile-first responsive design */
 @media (min-width: 640px) {
   #app {
-    max-width: 400px;
     margin: 0 auto;
   }
 }

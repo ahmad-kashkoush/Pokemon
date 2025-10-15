@@ -26,7 +26,7 @@ const toast = useToast()
 
 const handlePokemonClick = (pokemon: { id: number }) => {
   try {
-    router.push(`/${pokemon.id}`)
+    router.push(`/pokemons/${pokemon.id}`)
   } catch (error) {
     toast.error(`Navigation error: ${error}`)
   }

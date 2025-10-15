@@ -9,9 +9,9 @@ const router = createRouter({
       component: () => import('@/views/PokemonExplorerView.vue'),
     },
     {
-      path: '/:id',
+      path: '/pokemons/:id',
       name: 'pokemon-details',
-      component: () => import('@/views/PokemonDetailsView.vue'),
+      component: () => import('@/views/PokemonDetailsWrapper.vue'),
     },
     {
       path: '/favorites',
