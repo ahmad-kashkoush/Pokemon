@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePokemonExplorer } from '@/composables/usePokemonExplorer'
+import { usePokemonExplorer } from '@/composables/pokemon-explorer/usePokemonExplorer'
 
 interface Props {
   pokemonExplorer?: ReturnType<typeof usePokemonExplorer>

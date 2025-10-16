@@ -1,6 +1,5 @@
-import type { Pokemon } from '@/types/pokemon.type'
 import { useQuery } from '@tanstack/vue-query'
-import { computed, toValue, type MaybeRef, type Ref } from 'vue'
+import { computed, toValue, type MaybeRef } from 'vue'
 import { useRoute } from 'vue-router'
 import { PokemonService } from './pokemon.service'
 
@@ -8,27 +7,6 @@ export const usePokemonListQuery = () => {
   return useQuery({
     queryKey: ['pokemon-list'],
     queryFn: () => PokemonService.getPokemonList(),
-  })
-}
-
-export const useFilteredPokemonList = (
-  pokemonList: Ref<Pokemon[] | undefined>,
-  searchTerm: Ref<string>,
-) => {
-  return computed(() => {
-    if (!pokemonList.value?.length) return []
-
-    if (!searchTerm.value) return pokemonList.value
-
-    const search = searchTerm.value.toLowerCase()
-
-    return pokemonList.value.filter((pokemon) => {
-      return (
-        pokemon.name.toLowerCase().includes(search) ||
-        pokemon.id.toString().includes(search) ||
-        pokemon.types.some((type) => type.type.name.toLowerCase().includes(search))
-      )
-    })
   })
 }
 
@@ -41,10 +19,10 @@ export const usePokemonDetailsQuery = () => {
     enabled: computed(() => !!pokemonId.value),
   })
 }
-export const useEvolutionChainQuery = (url: MaybeRef<string>) => {
+export const useEvolutionChainQuery = (speciesUrl: MaybeRef<string>) => {
   return useQuery({
-    queryKey: ['evolution-chain', url],
-    queryFn: () => PokemonService.getEvolutionChainWithDetails(toValue(url)),
-    enabled: computed(() => !!toValue(url)),
+    queryKey: ['evolution-chain', speciesUrl],
+    queryFn: () => PokemonService.getEvolutionChainWithDetails(toValue(speciesUrl)),
+    enabled: computed(() => !!toValue(speciesUrl)),
   })
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useFavoritesStore } from '@/stores/favorite.store'
-import BaseListView from '@/components/base/BaseListView.vue'
+import BaseList from '@/components/base/BaseList.vue'
 
 const favoritesStore = useFavoritesStore()
 
@@ -11,6 +11,6 @@ const subtitle = computed(() => `${favoritesStore.favoritesCount} Pokémon`)
 </script>
 
 <template>
-  <BaseListView title="Favorieten" :pokemon="favoritesList"
+  <BaseList title="Favorieten" :pokemon="favoritesList"
     emptyMessage="Je hebt nog geen Pokémon toegevoegd aan je favorieten." :subtitle="subtitle" />
 </template>

@@ -18,17 +18,17 @@ export class PokemonService {
     return response.data
   }
 
-  static async getEvolutionChainWithDetails(url: string) {
-    const evolutionDataResponse = await axios.get(url)
-    const evolutionData = evolutionDataResponse.data
+  static async getEvolutionChainWithDetails(speciesUrl: string) {
+    const evolutionDataResponse = await axios.get(speciesUrl)
+    const baseEvolution = evolutionDataResponse.data
 
     const pokemonIds: number[] = []
-    const baseId = extractId(evolutionData.evolution_chain.url)
+    const baseId = extractId(baseEvolution.evolution_chain.url)
     if (baseId !== null) {
       pokemonIds.push(baseId)
     }
 
-    const evolutionChainResponse = await axios.get(evolutionData.evolution_chain.url)
+    const evolutionChainResponse = await axios.get(baseEvolution.evolution_chain.url)
     const evolutionChain = evolutionChainResponse.data
 
     evolutionChain.chain.evolves_to.forEach((evo: any) => {

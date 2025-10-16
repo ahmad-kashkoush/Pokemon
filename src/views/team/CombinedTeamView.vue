@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useTeamStore } from '@/stores/team.store'
-import BaseListView from '@/components/base/BaseListView.vue'
+import BaseList from '@/components/base/BaseList.vue'
 
 const teamStore = useTeamStore()
 
@@ -19,7 +19,7 @@ const actions = computed(() => [
 </script>
 
 <template>
-  <BaseListView title="Mijn Team" :pokemon="teamList"
+  <BaseList title="Mijn Team" :pokemon="teamList"
     emptyMessage="Je hebt nog geen Pokémon toegevoegd aan je team. Je kunt maximaal 6 Pokémon selecteren."
     :subtitle="subtitle" :actions="actions" />
 </template>

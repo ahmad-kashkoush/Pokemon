@@ -13,8 +13,8 @@ import { computed } from 'vue'
 
 const { data: pokemon, isLoading, isError, error, refetch } = usePokemonDetailsQuery()
 
-const evolutionChainUrl = computed(() => pokemon.value?.species?.url || '')
-const { data: evolutionChainPokemons, isLoading: isEvolutionLoading, isError: isEvolutionError } = useEvolutionChainQuery(evolutionChainUrl)
+const speciesUrl = computed(() => pokemon.value?.species?.url || '')
+const { data: evolutionChainPokemons, isLoading: isEvolutionLoading, isError: isEvolutionError } = useEvolutionChainQuery(speciesUrl)
 
 
 
