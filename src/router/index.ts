@@ -11,7 +11,7 @@ const router = createRouter({
     {
       path: '/pokemons/:id',
       name: 'pokemon-details',
-      component: () => import('@/views/pokemonDetails/PokemonDetailsWrapper.vue'),
+      component: () => import('@/views/pokemon-details/PokemonDetailsWrapper.vue'),
     },
     {
       path: '/favorites',

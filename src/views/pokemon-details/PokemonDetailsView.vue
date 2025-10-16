@@ -7,7 +7,7 @@ import PokemonDetailsHeader from '@/components/pokemon-details/PokemonDetailsHea
 import PokemonDetailsAbout from '@/components/pokemon-details/PokemonDetailsAbout.vue'
 import PokemonDetailsStatistics from '@/components/pokemon-details/PokemonDetailsStatistics.vue'
 import PokemonDetailsMoveset from '@/components/pokemon-details/PokemonDetailsMoveset.vue'
-import PokemonImageViewer from '@/components/PokemonImage/PokemonImageViewer.vue'
+import PokemonImageViewer from '@/components/pokemon-image/PokemonImageViewer.vue'
 import PokemonList from '@/components/PokemonList.vue'
 import { computed } from 'vue'
 

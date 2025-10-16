@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useFavoritesStore } from '@/stores/favorite.store'
-import AppBackButton from '@/components/app/AppBackButton.vue'
-import PokemonList from '@/components/PokemonList.vue'
+import BaseListView from '@/components/base/BaseListView.vue'
 
 const favoritesStore = useFavoritesStore()
 
@@ -11,13 +10,7 @@ const favoritesList = computed(() => favoritesStore.favoritePokemons)
 </script>
 
 <template>
-  <main class="hero-teal">
-    <!-- Header -->
-    <div class="hero-header">
-      <AppBackButton />
-      <h1 class="text-3xl font-bold text-white">Favorieten</h1>
-    </div>
-    <!-- todo: add component slot instead of emptyMessage -->
-    <PokemonList :pokemon="favoritesList" emptyMessage="Je hebt nog geen Pokémon toegevoegd aan je favorieten." />
-  </main>
+  <BaseListView title="Favorieten" :pokemon="favoritesList"
+    emptyMessage="Je hebt nog geen Pokémon toegevoegd aan je favorieten." heroClass="hero-teal"
+    :showBackButton="true" />
 </template>
