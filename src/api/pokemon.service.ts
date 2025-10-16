@@ -45,7 +45,7 @@ export class PokemonService {
       })
     })
     const evolutionDetails = await Promise.all(
-      pokemonIds.filter((id) => id !== null).map((id) => this.getPokemonDetails(id)), // Assuming you have this method
+      pokemonIds.filter((id) => id !== null).map((id) => this.getPokemonDetails(id)),
     )
     return evolutionDetails
   }

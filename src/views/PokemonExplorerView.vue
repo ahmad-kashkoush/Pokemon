@@ -14,7 +14,7 @@ import { useFavoritesStore } from '@/stores/favorite.store'
 import { useTeamStore } from '@/stores/team.store'
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import PokemonDetailsView from '@/views/pokemonDetails/PokemonDetailsView.vue'
+import PokemonDetailsView from '@/views/pokemon-details/PokemonDetailsView.vue'
 
 const route = useRoute()
 const favoritesStore = useFavoritesStore()
