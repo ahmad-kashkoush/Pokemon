@@ -1,5 +1,4 @@
 
-**The assignment is still being refined and is not yet in its final version. Updates will follow soon.**
 # pokemon-trainer
 
 This template should help get you started developing with Vue 3 in Vite.
