@@ -8,6 +8,7 @@ interface Props {
   pokemon: Pokemon[]
   emptyMessage: string
   heroClass?: string
+  metaInfo?: string
   onBackClick?: () => void
 }
 
@@ -25,6 +26,9 @@ withDefaults(defineProps<Props>(), {
         <h1 class="text-3xl font-bold text-white">
           {{ title }}
         </h1>
+        <p v-if="metaInfo" class="text-white/80 mt-1">
+          {{ metaInfo }}
+        </p>
       </div>
     </div>
 

@@ -13,11 +13,11 @@ const teamStore = useTeamStore()
 
 // Display all team Pokemon
 const teamList = computed(() => teamStore.teamPokemons)
-const subtitle = computed(() => `${teamStore.teamCount}/${teamStore.MAX_TEAM_SIZE}`)
+const metaInfo = computed(() => `${teamStore.teamCount}/${teamStore.MAX_TEAM_SIZE}`)
 </script>
 
 <template>
   <BaseList title="Mijn Team" :pokemon="teamList"
     emptyMessage="Je hebt nog geen Pokémon toegevoegd aan je team. Je kunt maximaal 6 Pokémon selecteren."
-    heroClass="hero-purple" :subtitle="subtitle" :onBackClick="onBackClick" />
+    heroClass="hero-purple" :metaInfo="metaInfo" :onBackClick="onBackClick" />
 </template>
