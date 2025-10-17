@@ -2,6 +2,7 @@
 import ContentCard from '@/components/ContentCard.vue'
 import TypeBadge from '@/components/TypeBadge.vue'
 import type { PokemonDetails } from '@/types/pokemon.type'
+import { formatName, formatPokemonId } from '@/utils/formatters'
 
 interface Props {
   pokemon: PokemonDetails
@@ -10,10 +11,6 @@ interface Props {
 defineProps<Props>()
 
 // Helper functions encapsulated within this component
-const formatPokemonId = (id: number) => {
-  return String(id).padStart(3, '0')
-}
-
 const formatHeight = (height?: number) => {
   if (!height) return 'N/A'
   return `${(height / 10).toFixed(1)}m`
@@ -30,8 +27,7 @@ const formatWeight = (weight?: number) => {
   <ContentCard title="ABOUT">
     <!-- Description -->
     <p class="text-gray-700 text-sm leading-relaxed mb-8">
-      {{ `${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} is a fascinating Pokemon with unique
-      characteristics.` }}
+      {{ `${formatName(pokemon.name)} is a fascinating Pokemon with unique characteristics.` }}
     </p>
 
     <!-- Pokemon Details -->
@@ -66,7 +62,7 @@ const formatWeight = (weight?: number) => {
       <div class="flex items-center gap-8">
         <span class="text-gray-400 text-sm w-20">Categorie</span>
         <span class="font-semibold text-gray-900">{{ pokemon.types?.[0]?.type?.name ?
-          pokemon.types[0].type.name.charAt(0).toUpperCase() + pokemon.types[0].type.name.slice(1) : 'Unknown' }}</span>
+          formatName(pokemon.types[0].type.name) : 'Unknown' }}</span>
       </div>
 
       <!-- Gender -->
@@ -82,8 +78,7 @@ const formatWeight = (weight?: number) => {
       <div class="flex items-center gap-2">
         <span class="text-gray-400 text-sm w-20">Vaardigheden</span>
         <span class="font-semibold text-gray-900">
-          {{pokemon.abilities?.length ? pokemon.abilities.map(a => a.ability.name.charAt(0).toUpperCase() +
-            a.ability.name.slice(1)).join(', ') : 'Unknown' }}
+          {{pokemon.abilities?.length ? pokemon.abilities.map(a => formatName(a.ability.name)).join(', ') : 'Unknown'}}
         </span>
       </div>
     </div>

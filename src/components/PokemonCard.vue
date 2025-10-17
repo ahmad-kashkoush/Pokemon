@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import IconArrowRight from '@/components/icons/IconArrowRight.vue'
 import TypeBadge from './TypeBadge.vue'
+import { formatName, formatPokemonId } from '@/utils/formatters'
 
 interface Pokemon {
   id: number
@@ -39,10 +40,6 @@ const handleClick = () => {
     emit('click', props.pokemon)
   }
 }
-
-const formatName = (name: string) => {
-  return name.charAt(0).toUpperCase() + name.slice(1)
-}
 </script>
 
 <template>
@@ -63,7 +60,7 @@ const formatName = (name: string) => {
     <!-- Pokemon Info -->
     <div class="flex-1 min-w-0">
       <h3 class="font-bold text-lg text-gray-900 capitalize">{{ formatName(pokemon.name) }}</h3>
-      <p class="text-gray-500 text-sm">Nr. {{ String(pokemon.id).padStart(3, '0') }}</p>
+      <p class="text-gray-500 text-sm">Nr. {{ formatPokemonId(pokemon.id) }}</p>
     </div>
 
     <!-- Pokemon Types -->

@@ -10,6 +10,8 @@ import PokemonDetailsMoveset from '@/components/pokemon-details/PokemonDetailsMo
 import PokemonImageViewer from '@/components/pokemon-image/PokemonImageViewer.vue'
 import PokemonList from '@/components/PokemonList.vue'
 import { computed } from 'vue'
+import { formatName, formatPokemonId } from '@/utils/formatters'
+import { getPrimaryTypeColor } from '@/utils/pokemon-color-types'
 
 const { data: pokemon, isLoading, isError, error, refetch } = usePokemonDetailsQuery()
 
@@ -21,45 +23,6 @@ const { data: evolutionChainPokemons, isLoading: isEvolutionLoading, isError: is
 const handleRetry = () => {
   refetch()
 }
-
-// Helper functions
-const formatName = (name: string) => {
-  return name.charAt(0).toUpperCase() + name.slice(1)
-}
-
-
-
-
-
-const getPrimaryTypeColor = (pokemonData: typeof pokemon.value) => {
-  if (!pokemonData?.types?.length) return 'bg-gray-400'
-  const primaryType = pokemonData.types[0].type.name
-
-  const typeColors: Record<string, string> = {
-    water: 'bg-blue-500',
-    fire: 'bg-red-500',
-    grass: 'bg-green-500',
-    electric: 'bg-yellow-500',
-    psychic: 'bg-pink-500',
-    ice: 'bg-blue-300',
-    dragon: 'bg-purple-600',
-    dark: 'bg-gray-800',
-    fairy: 'bg-pink-300',
-    normal: 'bg-gray-400',
-    fighting: 'bg-red-700',
-    poison: 'bg-purple-500',
-    ground: 'bg-yellow-600',
-    flying: 'bg-blue-400',
-    bug: 'bg-green-400',
-    rock: 'bg-yellow-800',
-    ghost: 'bg-purple-800',
-    steel: 'bg-gray-500',
-  }
-  return typeColors[primaryType] || 'bg-gray-400'
-}
-
-
-
 </script>
 <template>
   <AppLoader :isLoading="isLoading" />
@@ -67,7 +30,7 @@ const getPrimaryTypeColor = (pokemonData: typeof pokemon.value) => {
   <AppError :hasError="isError" :errorMessage="error?.message || 'Failed to load Pokemon details'"
     @retry="handleRetry" />
 
-  <div v-if="!isLoading && !isError && pokemon" :class="getPrimaryTypeColor(pokemon)" class="min-h-screen">
+  <div v-if="!isLoading && !isError && pokemon" :class="getPrimaryTypeColor(pokemon.types)" class="min-h-screen">
     <div class="pb-20">
       <PokemonDetailsHeader :pokemon="pokemon" />
 
@@ -81,7 +44,7 @@ const getPrimaryTypeColor = (pokemonData: typeof pokemon.value) => {
         </div>
 
         <div class="text-center mt-4">
-          <p class="text-white text-xl font-bold">#{{ String(pokemon.id).padStart(3, '0') }}</p>
+          <p class="text-white text-xl font-bold">#{{ formatPokemonId(pokemon.id) }}</p>
         </div>
       </div>
 
