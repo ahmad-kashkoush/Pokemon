@@ -2,8 +2,8 @@
 import AppFilterModal from '@/components/app/AppFilterModal.vue'
 import AppSearchBar from '@/components/app/AppSearchBar.vue'
 import AppSortModal from '@/components/app/AppSortModal.vue'
-import FavoriteView from '@/views/favorite/FavoriteView.vue'
-import TeamView from '@/views/team/TeamView.vue'
+import FavoriteView from '@/views/FavoriteView.vue'
+import TeamView from '@/views/TeamView.vue'
 import ExplorerHeader from '@/components/pokemon-explorer/ExplorerHeader.vue'
 import NavigationCard from '@/components/NavigationCard.vue'
 import PokemonList from '@/components/PokemonList.vue'
@@ -73,7 +73,7 @@ const showExplorerView = () => {
       </div>
 
       <div v-else-if="leftPanelView === 'favorites'">
-        <FavoriteView :onBackClick="showExplorerView" :showSubtitle="true" />
+        <FavoriteView :onBackClick="showExplorerView" />
       </div>
     </div>
 

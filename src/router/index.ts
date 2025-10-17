@@ -16,12 +16,12 @@ const router = createRouter({
     {
       path: '/favorites',
       name: 'favorites',
-      component: () => import('@/views/favorite/FavoriteView.vue'),
+      component: () => import('@/views/FavoriteView.vue'),
     },
     {
       path: '/team',
       name: 'team',
-      component: () => import('@/views/team/TeamView.vue'),
+      component: () => import('@/views/TeamView.vue'),
     },
     {
       path: '/:catchAll(.*)',

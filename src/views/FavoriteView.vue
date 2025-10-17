@@ -8,19 +8,16 @@ interface Props {
   showSubtitle?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  showSubtitle: false
-})
+defineProps<Props>()
 
 const favoritesStore = useFavoritesStore()
 
 // Display all favorite Pokemon
 const favoritesList = computed(() => favoritesStore.favoritePokemons)
-const subtitle = computed(() => props.showSubtitle ? `${favoritesStore.favoritesCount} Pokémon` : undefined)
 </script>
 
 <template>
   <BaseList title="Favorieten" :pokemon="favoritesList"
-    emptyMessage="Je hebt nog geen Pokémon toegevoegd aan je favorieten." heroClass="hero-teal" :subtitle="subtitle"
+    emptyMessage="Je hebt nog geen Pokémon toegevoegd aan je favorieten." heroClass="hero-teal"
     :onBackClick="onBackClick" />
 </template>

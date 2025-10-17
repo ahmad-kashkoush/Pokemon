@@ -8,7 +8,6 @@ interface Props {
   pokemon: Pokemon[]
   emptyMessage: string
   heroClass?: string
-  subtitle?: string
   onBackClick?: () => void
 }
 
@@ -27,9 +26,6 @@ withDefaults(defineProps<Props>(), {
         <h1 class="text-3xl font-bold text-white">
           {{ title }}
         </h1>
-      </div>
-      <div v-if="subtitle" class="ml-auto text-white text-sm">
-        {{ subtitle }}
       </div>
     </div>
 
