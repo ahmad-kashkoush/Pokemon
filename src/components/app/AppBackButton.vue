@@ -6,17 +6,22 @@ import { useRouter } from 'vue-router'
 interface Props {
   variant?: 'light' | 'dark'
   class?: string
+  onClick?: () => void
 }
 
 const props = withDefaults(defineProps<Props>(), {
   variant: 'light',
-  class: ''
+  class: '',
 })
 
 const router = useRouter()
 
-const goBack = () => {
-  router.go(-1)
+const handleClick = () => {
+  if (props.onClick) {
+    props.onClick()
+  } else {
+    router.go(-1)
+  }
 }
 
 const buttonClasses = computed(() => {
@@ -30,7 +35,7 @@ const buttonClasses = computed(() => {
 </script>
 
 <template>
-  <button @click="goBack" :class="[buttonClasses, 'cursor-pointer']" aria-label="Go back">
+  <button @click="handleClick" :class="[buttonClasses, 'cursor-pointer']" aria-label="Go back">
     <IconArrowLeft />
   </button>
 </template>
