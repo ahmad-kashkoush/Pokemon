@@ -50,7 +50,6 @@ npm run lint
 
 ## Implemented requirements
 
-**Note**: Still in-progress
 
 ### Core
 
