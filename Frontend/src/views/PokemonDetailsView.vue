@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useEvolutionChainQuery, usePokemonDetailsQuery } from '@/api/pokemon.query'
+import { useEvolutionChainQuery, usePokemonDetailsQuery } from '@/api/pokemon/pokemon.query'
 import AppError from '@/components/app/AppError.vue'
 import AppLoader from '@/components/app/AppLoader.vue'
 
@@ -15,8 +15,8 @@ import { getPrimaryTypeColor } from '@/utils/pokemon-color-types'
 
 const { data: pokemon, isLoading, isError, error, refetch } = usePokemonDetailsQuery()
 
-const speciesUrl = computed(() => pokemon.value?.species?.url || '')
-const { data: evolutionChainPokemons, isLoading: isEvolutionLoading, isError: isEvolutionError } = useEvolutionChainQuery(speciesUrl)
+const pokemonId = computed(() => pokemon.value?.id || '')
+const { data: evolutionChainPokemons, isLoading: isEvolutionLoading, isError: isEvolutionError } = useEvolutionChainQuery(pokemonId)
 
 
 

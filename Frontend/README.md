@@ -1,49 +1,59 @@
-## Setup
-### Install packages
-```bash
-npm i
-cd Backend/
+
+# pokemon-trainer
+
+This template should help get you started developing with Vue 3 in Vite.
+
+## Recommended IDE Setup
+
+[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+
+## Recommended Browser Setup
+
+- Chromium-based browsers (Chrome, Edge, Brave, etc.):
+  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
+  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
+- Firefox:
+  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
+  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+
+## Type Support for `.vue` Imports in TS
+
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vite.dev/config/).
+
+## Project Setup
+
+```sh
 npm install
-cd ../Frontend/
-npm install
-```
-### add envinronmental variables
-#### Backend/.env
-* Note: I've added a secret here for easier setup, this shouldn't be how it is done in a real world project. 
-```
-DATABASE_URL="postgresql://neondb_owner:npg_bYTMB8Jvq9So@ep-autumn-tree-aht4zuan-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
-
-```
-#### Frontend/.env
-```
-VITE_API_URL=http://localhost:3000
 ```
 
-## Run
+### Compile and Hot-Reload for Development
 
-### generate prisma schema
-* Note: Make sure to be in `Backend/` directory
-```
-npx prisma generate
-```
-### run front and backend servers
-* Note: Make sure to be in root directory `/`
-```
+```sh
 npm run dev
 ```
 
-## Generate dumb Data
-* Note: make sure to be in `Backend/` while running the commands
-```
-# First reset database
-npm run reset-data
+### Type-Check, Compile and Minify for Production
 
-# Seed data
-npm run seed-data
+```sh
+npm run build
 ```
-## Implemented Frontend requirements
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+npm run lint
+```
+
+## Implemented requirements
+
+**Note**: Still in-progress
 
 ### Core
+
 - [x] Trainers can see a list of Pokémon with some general information, such as ==name, number, picture and types.==
 - [x] Trainers can search for Pokémon by ==name and number.==
 - [x] Trainers can see the details of a Pokémon, with the general info ==(name, number, picture, types) but also things like abilities, move set and stats.==
@@ -63,17 +73,6 @@ npm run seed-data
 
 - [x] Some trainers have large devices. Your implementation should scale gracefully to larger screens. Even better would be to have a "split view", with the list of Pokémon on the left, and the details of one on the right.
 
-## Implemented Backend requirements
-### Core
-* Implement the pre-defined OpenAPI spec. document (see attachment). This includes calls to:
-  - [x] Get a list of Pokémon
-  - [x] A Pokémon’s details
-  - [x] CRUD calls to manage a team (limited to 6)
-- Store Pokémons' information in a database
-  - [x] Use an ORM with clearly defined models for each entity
-  - [x] Use migrations as needed
-- [x] Provide a command to import a dump / seed of Pokémon (see attachment).
-- [x] Provide a command to import a Pokémon from an external service (see docs), given an external ID or name as parameter.
 
 ## Demo
 
