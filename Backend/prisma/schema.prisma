@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  // output   = "../generated/prisma"
+}
+
+// prisma/schema.prisma
+datasource db {
+  provider  = "postgresql"
+  url  	    = env("DATABASE_URL")
+  // uncomment next line if you use Prisma <5.10
+  // directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+model Pokemon {
+  id          Int      @id @default(autoincrement())
+  name        String
+  sprites     Json  
+  types       Json     // Array of {slot: number, type: {name: string}}
+  height      Int?
+  weight      Int?
+  stats       Json?    // Array of {stat: {name: string}, base_stat: number}
+  abilities   Json?    // Array of {ability: {name: string}}
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  details     PokemonDetails?
+  teamMembers PokemonTeamMember[]
+  @@map("pokemons")
+}
+
+model PokemonDetails {
+  id                      Int      @id @default(autoincrement())
+  pokemonId               Int      @unique
+  baseExperience          Int?
+  height                  Int?
+  weight                  Int?
+  order                   Int?
+  isDefault               Boolean?
+  
+  abilities               Json?    // Array of {ability: {name: string, url: string}, is_hidden: boolean, slot: number}
+  
+  moves                   Json?    // Array of move names or simplified structure
+  
+  stats                   Json?    // Array of {base_stat: number, effort: number, stat: {name: string, url: string}}
+  
+  types                   Json?    // Array of {slot: number, type: {name: string, url: string}}
+  
+  forms                   Json?    // Array of {name: string, url: string}
+  
+  gameIndices             Json?    // Array of {game_index: number, version: {name: string, url: string}}
+  
+  heldItems               Json?    // Array of held item data
+  
+  locationAreaEncounters  String?
+  
+  sprites                 Json?    // Complete sprites object with all variations
+  
+  cries                   Json?    // {latest: string, legacy: string}
+  
+  speciesUrl              String?
+  
+  pastAbilities           Json?
+  pastTypes               Json?
+  
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+  
+  pokemon                 Pokemon  @relation(fields: [pokemonId], references: [id], onDelete: Cascade)
+
+  @@map("pokemon_details")
+}
+
+
+
+model PokemonTeamMember {
+  id         Int @id @default(autoincrement())
+  pokemonId  Int
+  pokemon    Pokemon     @relation(fields: [pokemonId], references: [id])
+  @@unique([pokemonId])
+  @@map("pokemon_team_members")
+}
