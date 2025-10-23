@@ -1,3 +1,4 @@
+* Note: The deployed version uses the external API, instead of the implemented one in the back.
 ## Setup
 ### Install packages
 ```bash
