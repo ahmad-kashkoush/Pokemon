@@ -15,11 +15,14 @@ export class PokemonController {
     return this.pokemonService.findAll();
   }
 
-  @Get('/details/:id')
+  @Get('/:id')
   findOneDetails(@Param('id') id: string) {
     return this.pokemonService.findOneDetails(id);
   }
-
+  @Get('/evolution-chain/:id')
+  findEvolutionChain(@Param('id') id: string) {
+    return this.pokemonService.findEvolutionChain(id);
+  }
   @Delete('/all')
   truncateAll() {
     return this.pokemonService.truncateAll();
