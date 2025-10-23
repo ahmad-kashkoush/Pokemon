@@ -8,15 +8,15 @@ import EmptyStateView from '@/components/pokemon-explorer/EmptyStateView.vue'
 import PokemonDetailsView from '@/views/PokemonDetailsView.vue'
 import { usePokemonExplorer } from '@/composables/pokemon-explorer/usePokemonExplorer'
 import { useScreenSize } from '@/composables/useScreenSize'
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { useLeftPanelStore } from '@/stores/leftPanel.store'
 
 const route = useRoute()
 const pokemonExplorer = usePokemonExplorer()
 const { isWideScreen } = useScreenSize(800)
 
-// Wide screen left panel tab track.
-const leftPanelView = ref<'explorer' | 'team' | 'favorites'>('explorer')
+const leftPanel = useLeftPanelStore()
 
 const pokemonId = computed(() => {
   const id = route.params.id
@@ -25,19 +25,15 @@ const pokemonId = computed(() => {
 
 // Determine if we should show details view (mobile with ID in route)
 const showMobileDetailsView = computed(() => !isWideScreen.value && pokemonId.value !== null)
-
 // Handle navigation clicks
 const handleNavigationClick = (view: 'team' | 'favorites') => {
   if (isWideScreen.value) {
-    leftPanelView.value = view
+    leftPanel.setLeftPanelView(view);
   } else {
     window.location.href = `/${view}`
   }
 }
 
-const showExplorerView = () => {
-  leftPanelView.value = 'explorer'
-}
 </script>
 
 <template>
@@ -45,19 +41,19 @@ const showExplorerView = () => {
   <div v-if="isWideScreen" class="flex h-screen">
     <!-- Left Panel -->
     <div class="flex-1 border-r border-gray-200 overflow-auto">
-      <ExplorerContent v-if="leftPanelView === 'explorer'" :pokemonExplorer="pokemonExplorer"
+      <ExplorerContent v-if="leftPanel.leftPanelView === 'explorer'" :pokemonExplorer="pokemonExplorer"
         :onTeamClick="() => handleNavigationClick('team')"
         :onFavoritesClick="() => handleNavigationClick('favorites')" />
 
-      <TeamView v-else-if="leftPanelView === 'team'" :onBackClick="showExplorerView" />
+      <TeamView v-else-if="leftPanel.leftPanelView === 'team'" :onBackClick="leftPanel.showExplorerView" />
 
-      <FavoriteView v-else-if="leftPanelView === 'favorites'" :onBackClick="showExplorerView" />
+      <FavoriteView v-else-if="leftPanel.leftPanelView === 'favorites'" :onBackClick="leftPanel.showExplorerView" />
     </div>
 
     <!-- Right Panel -->
     <div class="flex-1 overflow-auto">
       <PokemonDetailsView v-if="pokemonId" />
-      <EmptyStateView v-else :context="leftPanelView" />
+      <EmptyStateView v-else :context="leftPanel.leftPanelView" />
     </div>
   </div>
 
