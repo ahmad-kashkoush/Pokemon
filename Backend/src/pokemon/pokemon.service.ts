@@ -66,8 +66,9 @@ export class PokemonService {
   }
   async truncateAll() {
     await this.databaseService.$transaction([
-      this.databaseService.pokemon.deleteMany(),
+      this.databaseService.pokemonTeamMember.deleteMany(),
       this.databaseService.pokemonDetails.deleteMany(),
+      this.databaseService.pokemon.deleteMany(),
     ]);
   }
 

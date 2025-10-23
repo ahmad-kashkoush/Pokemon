@@ -3,17 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 const API_URL = 'http://localhost:3000/pokemon'; // Adjust if your server runs on a different port
-async function deleteAll() {
-  try {
-    await axios.delete(API_URL + '/all');
-  } catch (err) {
-    console.error(
-      'Error deleting all records:',
-      err.response?.data || err.message,
-    );
-  }
-}
-async function generateData() {
+
+ async function generateData() {
   const dataPath = path.join(__dirname, 'pokemon.json');
   const pokemons = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 
@@ -36,9 +27,6 @@ async function generateData() {
   }
   console.log('Done!');
 }
-async function main() {
-  await deleteAll();
-  await generateData();
-}
 
-main();
+module.exports = generateData;
+generateData();

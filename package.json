@@ -9,13 +9,10 @@
     "dev:frontend": "npm --workspace Frontend run dev",
     "dev:backend": "npm --workspace Backend run start:dev",
     "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
-    "backend:generate-data": "npm --workspace Backend run generate-data",
-    "install": "npm install --workspaces"
   },
   "devDependencies": {
     "concurrently": "^9.0.0"
   },
   "dependencies": {
-    "axios": "^1.12.2"
   }
 }
