@@ -7,9 +7,10 @@ const extractId = (url: string) => {
 }
 export class PokemonService {
   static async getPokemonList() {
-    const response = await axios.get(
-      'https://stoplight.io/mocks/appwise-be/pokemon/57519009/pokemon',
-    )
+    // const response = await axios.get(
+    //   'https://stoplight.io/mocks/appwise-be/pokemon/57519009/pokemon',
+    // )
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/pokemon`)
     return response.data
   }
 

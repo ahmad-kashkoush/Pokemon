@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useEvolutionChainQuery, usePokemonDetailsQuery } from '@/api/pokemon.query'
+import { useEvolutionChainQuery, usePokemonDetailsQuery } from '@/api/pokemon/pokemon.query'
 import AppError from '@/components/app/AppError.vue'
 import AppLoader from '@/components/app/AppLoader.vue'
 

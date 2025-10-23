@@ -1,6 +1,6 @@
 import { ref, computed, type Ref } from 'vue'
-import { usePokemonListQuery } from '@/api/pokemon.query'
 import type { Pokemon } from '@/types/pokemon.type'
+import { usePokemonListQuery } from '@/api/pokemon/pokemon.query'
 
 export function usePokemonSearch() {
   const searchTerm = ref('')
